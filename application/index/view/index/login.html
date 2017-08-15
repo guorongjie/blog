@@ -1,0 +1,106 @@
+{extend name="base/base" /}
+
+{block name="title"}<title>我告诉你个小秘密</title>{/block}
+{block name="style"}
+<style>
+    .login{
+        margin-top: 60px;
+
+    }
+    .login-main{
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        background: #fff;
+        border: 1px solid #e7eaf1;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+    }
+    .login-title{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="container login">
+    <div class="row">
+        <div class="col-lg-8 login-main">
+            <h2 class="login-title">用户登录</h2>
+            <form class="form-horizontal" id="form">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">账号</label>
+                    <div class="col-sm-5">
+                        <input type="user_name" class="form-control" name="user_name" id="username" placeholder="手机号码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="verify" class="col-sm-2 control-label">验证码</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="verify" id=verify placeholder="">
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="{:url('Index/getVerify')}" onclick="javascript:this.src='{:url('getVerify')}?tm='+Math.random();" style="cursor: pointer"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    /*提交表单*/
+    $("#form").validate({
+        rules: {
+            user_name: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 6,
+            },
+        },
+        messages: {
+            user_name:{
+                required:"请填写用户名",
+            },
+            password:{
+                required:'请输入密码',
+                minlength: "长度必须大于6"
+            },
+        },
+        submitHandler: function(form)
+        {
+            $.ajax({
+                type: "POST",
+                url:"{:url('Index/login')}",
+                data:$('#form').serialize(),// 你的formid
+                error: function(data) {
+                    console.log(data);
+                },
+                success: function(data) {
+                    if(data.code == 200) {
+                        layer.msg('登陆成功');
+                        location.href = "{:url('User/publish')}";
+                    }
+                }
+            });
+        }
+    });
+</script>
+{/block}

@@ -1,0 +1,294 @@
+{extend name="base/base" /}
+{block name="style"}
+<style>
+    .main{
+        position: relative;
+        /*width: 1024px;*/
+        margin: 80px auto;
+        border-radius: 5px;
+        box-shadow: 0 0 15px silver;
+        background-color: #fff;
+        overflow: hidden;
+    }
+    .resume-head{
+        position: relative;
+        padding: 30px 50px;
+        color: #fff;
+        background-color: #00b38a;
+        overflow: hidden;
+    }
+.head-title{
+    width: 100%;
+    border-bottom: 2px solid #00a982;
+    font-size: 52px;
+    font-weight: 300;
+    overflow: hidden;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.title-name{
+    float: left;
+}
+.title-name h1{
+    font-size: 60px;
+}
+.job{
+    padding-top: 30px;
+    float: right;
+}
+    .info{
+        float: left;
+        padding-left: 5px;
+        line-height: 30px;
+    }
+    .contact{
+        float: right;
+        text-align: right;
+        padding-right: 5px
+    }
+    .contact ul{
+        margin: 8px 0 4px;
+    }
+
+    .resume-bd{
+        width: 100%;
+        min-height: 200px;
+        padding: 20px 30px 50px;
+        overflow: hidden;
+    }
+    .bd-left{
+        float: left;
+        width: 50%;
+    }
+    .bd-right{
+        float: right;
+        width: 50%;
+    }
+    .section-header{
+        position: relative;
+        height: 32px;
+        margin: 10px auto 5px;
+        overflow: hidden;
+    }
+    .skill{
+        overflow: hidden;
+        padding: 10px 15px;
+    }
+    .section-title-l{
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 35%;
+        height: 0;
+        vertical-align: middle;
+        border-top: 1px solid #ededed;
+    }
+    .section-title{
+        left: 0;
+        position: relative;
+        z-index: 1;
+        width: 24%;
+        min-width: 100px;
+        margin: 0 auto;
+        padding: 4px 10px;
+        border-radius: 32px;
+        font-size: 16px;
+        text-align: center;
+        background-color: #eee;
+    }
+    .section-title-r{
+        right: 0;
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 35%;
+        height: 0;
+        vertical-align: middle;
+        border-top: 1px solid #ededed;
+    }
+    .section-list{
+        padding: 10px 0 5px;
+    }
+    .sectionList-text{
+        margin-bottom: 5px;
+        line-height: 24px;
+    }
+    .sectionList-text .fa-circle{
+        color: #00b38a;
+        font-size: 4px;
+        margin-right: 10px;
+    }
+
+
+    .person{
+        overflow: hidden;
+        padding: 10px 15px;
+    }
+    .section-item{
+        margin-bottom: 10px;
+    }
+    .item-bd{
+        overflow: hidden;
+    }
+    .item-header{
+        position: relative;
+        padding: 10px;
+        line-height: 20px;
+        overflow: hidden;
+        font-weight: 500;
+    }
+    .itemHeader-link{
+        float: right;
+        margin-left: 5px;
+        padding: 0 4px;
+    }
+    .itemHeader-title{
+        font-size: 16px;
+        display: inline-block;
+        float: left;
+    }
+    .itemDb-text{
+        padding-right: 10px;
+        text-align: justify;
+        word-break: break-all;
+        line-height: 22px;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="main container">
+    <div class="row resume-head">
+        <div class="head-title">
+            <div class="title-name">
+                <h1>你大爷</h1>
+            </div>
+            <div class="job"><h3>小编</h3></div>
+        </div>
+        <div class="info">
+            <h4>男&nbsp;1999-9-9</h4>
+            <h5>东北林业大学 · 机械设计制造及其自动化</h5>
+            <h5>本科 / 2014.09 ~ 2018.06</h5>
+        </div>
+        <div class="contact">
+            <ul>
+                <li>shijinrong.cn  &nbsp;<i class="fa fa-home" aria-hidden="true"></i></li>
+                <li>github.com/aierui &nbsp;<i class="fa fa-github" aria-hidden="true"></i></li>
+                <li>aieruishi#gmail.com&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i></li>
+                <li>1333061****&nbsp;<i class="fa fa-phone" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="resume-bd">
+        <div class="bd-left">
+            <section class="skill">
+                <div class="section-header">
+                    <span class="section-title-l"></span>
+                    <h2 class="section-title">专业技能</h2>
+                    <span class="section-title-r"></span>
+                </div>
+                <div class="section-bd">
+                    <ul class="section-list">
+                        <li>
+                            <p class="sectionList-text"><i class="fa fa-circle" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                        </li><li>
+                            <p class="sectionList-text"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                        </li><li>
+                            <p class="sectionList-text"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="person">
+                <div class="section-header">
+                    <span class="section-title-l"></span>
+                    <h2 class="section-title">个人作品</h2>
+                    <span class="section-title-r"></span>
+                </div>
+                <div class="section-bd">
+                    <div class="section-item">
+                        <div class="item-header">
+                            <button class="btn btn-info itemHeader-link">Link</button>
+                            <p class="itemHeader-title">大似懂非懂</p>
+                        </div>
+                        <div class="item-bd">
+                            <div class="itemDb-text">
+                                <p>&nbsp;&nbsp;大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="item-header">
+                            <button class="btn btn-info itemHeader-link">Link</button>
+                            <p class="itemHeader-title">大似懂非懂</p>
+                        </div>
+                        <div class="item-bd">
+                            <div class="itemDb-text">
+                                <p>&nbsp;&nbsp;大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="bd-right">
+            <section class="skill">
+                <div class="section-header">
+                    <span class="section-title-l"></span>
+                    <h2 class="section-title">专业技能</h2>
+                    <span class="section-title-r"></span>
+                </div>
+                <div class="section-bd">
+                    <ul class="section-list">
+                        <li>
+                            <p class="sectionList-text"><i class="fa fa-circle" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                        </li><li>
+                        <p class="sectionList-text"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                    </li><li>
+                        <p class="sectionList-text"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>掌握JavaScript、ES6、HTML(5)、CSS(3)等基础知识，熟悉W3C标准，关注语言新特性。</p>
+                    </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="person">
+                <div class="section-header">
+                    <span class="section-title-l"></span>
+                    <h2 class="section-title">个人作品</h2>
+                    <span class="section-title-r"></span>
+                </div>
+                <div class="section-bd">
+                    <div class="section-item">
+                        <div class="item-header">
+                            <button class="btn btn-info itemHeader-link">Link</button>
+                            <p class="itemHeader-title">大似懂非懂</p>
+                        </div>
+                        <div class="item-bd">
+                            <div class="itemDb-text">
+                                <p>&nbsp;&nbsp;大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="item-header">
+                            <button class="btn btn-info itemHeader-link">Link</button>
+                            <p class="itemHeader-title">大似懂非懂</p>
+                        </div>
+                        <div class="item-bd">
+                            <div class="itemDb-text">
+                                <p>&nbsp;&nbsp;大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所大分店所付多撒付多撒付多撒付大所所所所所所所所所所所所所所所所所所所</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+{/block}
+{block name="script"}
+
+{/block}

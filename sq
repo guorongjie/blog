@@ -1,0 +1,62 @@
+CREATE TABLE `b_users` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `user_name` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
+  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `password` char(32) NOT NULL DEFAULT '' COMMENT '用户密码',
+  `mobile` varchar(20) NOT NULL DEFAULT '' COMMENT '手机',
+  `reg_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '注册时间',
+  `last_login` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间戳',
+  `last_ip` varchar(15) NOT NULL DEFAULT '' COMMENT '最后登录ip',
+  `logins` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录次数',
+  `portrait` varchar(255) NOT NULL DEFAULT '' COMMENT '头像图像路径',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`) USING BTREE,
+  KEY `mobile` (`mobile`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='会员表';
+
+
+CREATE TABLE `b_ip` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `ip` varchar(60) NOT NULL DEFAULT '' COMMENT 'ip',
+  `add_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='ip表';
+
+CREATE TABLE `b_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `name` varchar(60) NOT NULL DEFAULT '' COMMENT 'ip',
+  `add_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='tags表';
+
+CREATE TABLE `b_articles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `tags_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'tags_id',
+  `title` varchar(60) NOT NULL DEFAULT '' COMMENT '标题',
+  `keywords` varchar(60) NOT NULL DEFAULT '' COMMENT 'keywords',
+  `add_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `content` text COMMENT '内容',
+  `img` varchar(100) NOT NULL DEFAULT '' COMMENT '题图',
+  `up` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞数',
+  `down` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '踩数',
+  `comment` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论数',
+  `visit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '浏览数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='文章表';
+
+CREATE TABLE `b_works` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `tags_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'tags_id',
+  `title` varchar(60) NOT NULL DEFAULT '' COMMENT '标题',
+  `keywords` varchar(60) NOT NULL DEFAULT '' COMMENT 'keywords',
+  `add_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `content` text COMMENT '内容',
+  `img` varchar(100) NOT NULL DEFAULT '' COMMENT '题图',
+  `up` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞数',
+  `down` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '踩数',
+  `comment` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论数',
+  `visit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '浏览数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='作品表';
+
+

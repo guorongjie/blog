@@ -1,0 +1,233 @@
+{extend name="base/base" /}
+{block name="style"}
+<style>
+    .ml20 {
+        margin-left: 20px;
+    }
+    .main {
+        margin-top: 58px;
+    }
+    .Topstory-header {
+        line-height: 58px;
+        padding: 0 20px;
+        margin-bottom: 10px;
+        background: #fff;;
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+    }
+
+    .Topstory-header a {
+        text-decoration: none;
+    }
+
+    .Topstory-header i {
+        margin-right: 8px;
+    }
+
+    .Topstory-item {
+        padding: 16px 20px;
+        margin-bottom: 10px;
+        background: #fff;
+        border:1px solid #e7eaf1;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+    }
+    .item-content .fa{
+        color: #666;
+    }
+    .quote-right{
+        float: right;
+    }
+    .item-img img {
+        display: block;
+        margin: auto;
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item-bottom {
+        margin: 10px 0;
+        color: #666;
+    }
+
+    .sidebar-line {
+        padding: 16px 20px;
+        margin-bottom: 10px;
+        background: #fff;
+        border: 1px solid #e7eaf1;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+    }
+
+    .sidebar-line li {
+        height: 40px;
+        padding-bottom: 4px;
+        color: #666;
+    }
+    .active-users .fa{
+        color: #ff5500;
+    }
+    .active-article .fa{
+        color: #ff0000;
+    }
+    .weixin-code{
+        padding: 10px;
+    }
+    .weixin-code img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+</style>
+{/block}
+{block name="content"}
+<div class="main container">
+    <div class="row">
+        <div class="Topstory-main col-lg-8">
+            {volist name="lists" id="vo"}
+            <div class="Topstory-item">
+                <h3 class="item-title"><a href="{:url('Index/detail',array('id'=>1))}" class="itemTitle-text">{$vo.title}</a></h3>
+                <div class="item-meto"><span class="item-time"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i>&nbsp;{$vo.add_time|date='Y-m-d',###} &nbsp;</span>
+                </div>
+                <div class="item-content">
+                    <div class="quote-left"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="itemContent-text"><a>{$vo.content|mb_substr=0,100,'utf-8'}</a>
+                    </div>
+                    <div class="quote-right"><i class="fa fa-quote-right" aria-hidden="true"></i></div>
+                </div>
+                <hr/>
+                <div class="item-img">
+                    <img class="itemImg-img" src="{$vo.img}"/>
+                </div>
+                <div class="row item-bottom">
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments" onclick="action('1', '{$vo.id}')"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>&nbsp;<span id="up{$vo.id}"> {$vo.up}</span></a>
+                    </div>
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments" onclick="action('2', '{$vo.id}')"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>&nbsp;<span
+                                id="down{$vo.id}"> {$vo.down}</span></a>
+                    </div>
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments"><i class="fa fa-comments fa-lg" aria-hidden="true"></i>&nbsp;<span
+                                id="comment"> {$vo.comment}</span></a>
+                    </div>
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments"><i class="fa fa-eye fa-lg" aria-hidden="true"></i>&nbsp;<span id="visit"> {$vo.visit}</span></a>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+            <!--<div class="Topstory-item">
+                <h3 class="item-title"><a href="{:url('Index/detail',array('id'=>1))}" class="itemTitle-text">的飞洒大厦法定三</a></h3>
+                <div class="item-meto"><span class="item-time"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i>&nbsp;2017-12-14 &nbsp;|</span><span></span><i
+                        class="fa fa-file-o" aria-hidden="true"></i>&nbsp;工作
+                </div>
+                <div class="item-content">
+                    <div class="quote-left"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="itemContent-text"><a>的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三的飞洒大厦法定三</a>
+                    </div>
+                    <div class="quote-right"><i class="fa fa-quote-right" aria-hidden="true"></i></div>
+                </div>
+                <hr/>
+                <div class="item-img">
+                    <img class="itemImg-img" src="/upload/image/dd.png"/>
+                </div>
+                <div class="row item-bottom">
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>&nbsp;231</a>
+                    </div>
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>&nbsp;231</a>
+                    </div>
+                    <div class="col-lg-2 col-xs-4">
+                        <a class="comments"><i class="fa fa-comments fa-lg" aria-hidden="true"></i>&nbsp;231</a>
+                    </div>
+                </div>
+
+            </div>-->
+            <div>{$page}</div>
+        </div>
+        <div class="Topstory-sidebar col-lg-4">
+            <!--<div class="sidebarLine-head"></div>-->
+            <div class="sidebar-line">
+                <p>标签</p>
+                <hr/>
+                <ul>
+                    {volist name="tags" id="vo"}
+                    <li><a class=""><i class="fa fa-tags" aria-hidden="true"></i> &nbsp;{$vo.name}</a></li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="sidebar-line active-article">
+                <p>热文</p>
+                <hr/>
+                <ul>
+                    {volist name="hot" id="vo"}
+                    <li><a href="{:url('Index/detail',array('id'=>$vo.id))}" class=""><i class="fa fa-fire" aria-hidden="true"></i>&nbsp;{$vo.title|mb_substr=0,40,'utf-8'}</a></li>
+                    {/volist}
+                </ul>
+            </div>
+            <!--&lt;!&ndash;<div class="sidebar-line active-users">
+                <p>活跃用户</p>
+                <hr/>
+                <ul>
+                    <li><a class=""><i class="fa fa-star" aria-hidden="true"></i>&nbsp;我的关注</a></li>
+                    <li><a class=""><i class="fa fa-star" aria-hidden="true"></i>&nbsp;我的收藏</a></li>
+                </ul>
+            </div>-->
+            <!--<div class="sidebar-line active-users">
+                <p>留言</p>
+                <hr/>
+                <ul>
+                    <li><a class=""><i class="fa fa-star" aria-hidden="true"></i>&nbsp;我的关注</a></li>
+                    <li><a class=""><i class="fa fa-star" aria-hidden="true"></i>&nbsp;我的收藏</a></li>
+                </ul>
+            </div>-->
+            <div class="sidebar-line Official-weixin">
+                <p>个人微信</p>
+                <hr/>
+                <div class="weixin-code">
+                    <img src="/static/images/weixin.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    function action(type, id) {
+        /*提交*/
+        var aj = $.ajax( {
+            url:"{:url('Index/onclick')}",// 跳转到 action
+            data:{
+                "type" :type,
+                "id" : id,
+            },
+            type:'post',
+            cache:false,
+            timeout:0,
+            dataType:'json',
+            success:function(data) {
+                console.log(data);
+                if(data.code == 200){
+                    switch (type) {
+                        case '1':
+                            $("#up"+id).text(parseInt($("#up"+id).text()) + 1);
+                            break;
+                        case '2':
+                            $("#down"+id).text(parseInt($("#down"+id).text()) + 1);
+
+                            break;
+                    }
+                }else {
+                    layer.msg('操作失败');
+                }
+            },
+            error : function() {
+                console.log(data);
+            }
+        });
+    }
+</script>
+{/block}

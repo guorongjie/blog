@@ -1,0 +1,77 @@
+{extend name="base/base" /}
+
+{block name="title"}<title>我告诉你个小秘密</title>{/block}
+{block name="style"}
+<style>
+    .detail{
+        margin-top: 60px;
+    }
+    .article{
+        padding: 16px 20px;
+        margin-bottom: 10px;
+        background: #fff;
+        border: 1px solid #e7eaf1;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+    }
+    .article-header{
+        text-align: center;
+    }
+    .article-content {
+        font-size: 16px;
+        line-height: 2;
+    }
+    .article-reword{
+        margin-top: 30px;
+        text-align: center;
+    }
+    .reword-text{
+        color: #666;
+    }
+    .article-reword .btn-danger{
+        /*background: #f44336;*/
+        padding: 4px 30px;
+    }
+    .item-img img {
+        display: block;
+        margin: auto;
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+</style>
+{/block}
+{block name="content"}
+<div class="container detail">
+    <div class="row">
+        <div class="col-lg-8 article">
+            <div class="article-header">
+                <h2 class="article-title">{$info.title}</h2>
+                <div class="post-meto">
+                    <span class="item-time"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i>&nbsp;{$info.add_time|date='Y-m-d',###} &nbsp;|</span>
+                    <span></span><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;{$info.tag_name}
+                </div>
+            </div>
+            <hr/>
+            <div class="item-img">
+                <img class="itemImg-img" src="{$info.img}"/>
+            </div>
+            <hr/>
+
+            <div class="article-content">
+                <p>
+                    {$info.content}
+                </p>
+            </div>
+            <div class="article-reword">
+                <p class="reword-text">抬头仰望着明天星空</p>
+                <button class="btn btn-danger">赏</button>
+            </div>
+            <hr/>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+</div>
+{/block}

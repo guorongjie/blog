@@ -1,0 +1,24 @@
+{extend name="base/base" /}
+{block name="style"}
+<style>
+.about{
+    text-align: center;
+}
+    .possible{
+        margin-left:  400px;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="main container">
+    <div class="row about" style="height: 800px">
+        <h2>我是小郭</h2>
+        <h3 class="possible">——&nbsp;Nothing is impossible!</h3>
+        <div><a href="{:url('Index/resume')}"> 喜欢我，就点我吧</a></div>
+    </div>
+</div>
+
+{/block}
+{block name="script"}
+
+{/block}

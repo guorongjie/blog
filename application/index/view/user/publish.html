@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="__BOOTSTRAP__/js/bootstrap.js"></script>
+    <script src="__STATIC__/ue/ueditor.config.js"></script>
+    <script src="__STATIC__/ue/ueditor.all.js"></script>
+    <script src="__STATIC__/ue/lang/zh-cn/zh-cn.js"></script>
+    <script src="http://apps.bdimg.com/libs/layer/2.1/layer.js"></script>
+
+    <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.css">
+    <link rel="stylesheet" href="__STATIC__/user/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/font-awesome/css/font-awesome.min.css">
+    <style>
+        body{
+            background: #fff;
+        }
+        .nav{
+            padding: 10px;
+            background: #fff;
+            border-bottom:1px solid transparent;
+            border-color: rgba(0,0,0,0.08);
+        }
+        nav-title{
+            font-weight: 700;
+            color: #333;
+            margin-right: 20px;
+        }
+        .navTitle-text{
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+        .write{
+            margin: 24px auto 0;
+        }
+        .write-addimg{
+            cursor: pointer;
+            background: #f7f8f9;
+            line-height: 192px;
+            color: #808080;
+            min-height: 192px;
+            text-align: center
+        }
+        .writeAddimg-tips{
+            font-size: 12px;
+
+        }
+        .write-title, tags{
+            margin-top: 10px;
+            padding: 4px 0;
+        }
+        .write-title input{
+            height: 44px;
+            min-height: 44px;
+            display: block;
+            width: 100%;
+            border: 0;
+            font-size: 32px;
+            line-height: 1.4;
+            font-weight: 700;
+            outline: none;
+            box-shadow: none;
+        }
+        .ue{
+            margin-top: 10px;
+            width: 100%;
+            height: 100%;
+        }
+        .nav .btn{
+            background: #fff;
+            /*color: #fff;*/
+            border:1px solid #ccc;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid nav">
+    <div class="container">
+        <div class="row nav-title"><a href="{:url('@index/Index/index')}" class="navTitle-text">GUO</a><span class="navTitle-tips"></span><button class="btn" onclick="publish();">发布<i
+                class="fa fa-share" aria-hidden="true"></i></button></div>
+    </div>
+</div>
+<div class="container write">
+    <form method="post" style="display: none;" id="uploadForm" action="{:url('User/uploadTitleImg')}"
+          enctype="multipart/form-data">
+        <input type="file" id="title_img_file" name="title_img">
+        <input type="hidden" name="uploadPath" value="store">
+    </form>
+    <div class="row">
+        <div class="write-addimg" id="show" style="display: none;" >
+            <input type="hidden" name="imgurl" id="title_img">
+            <img id="title_img2"/>
+        </div>
+        <div class="write-addimg" id="hidden01" onclick="uploadImg('title_img');">
+            <i class="fa fa-camera fa-2x" aria-hidden="true"><p class="writeAddimg-tips">添加题图</p></i>
+
+        </div>
+
+        <div class="write-title">
+            <input type="text" name="title" value="" placeholder="请输入标题">
+        </div>
+        <div class="tags">
+            <select class="form-control" id="tags">
+                <option value="0">请选择标签</option>
+                {volist name="tags" id="vo"}
+                <option value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="ue">
+            <script id="editor" type="text/plain" style="height:500px;"></script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+       var ue = UE.getEditor('editor');
+
+
+</script>
+            <script src="__STATIC__/jquery.form.js"></script>
+            <script>
+                var loading = true;
+                function uploadImg(imgtype) {
+                    //修改上传form参数
+                    var upinput = $('#'+imgtype + '_file');
+                    upinput.click();
+                    upinput.unbind('change');
+                    upinput.change(function () {
+                        if (loading) {
+                            loading = false;
+//                    var lod = layer.load();
+                            $("#uploadForm").ajaxSubmit({
+                                dataType: 'json',
+                                beforeSend: function () {
+                                },
+                                uploadProgress: function (event, position, total, percentComplete) {
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                    if (data.code == 200) {
+                                        setpicurl(data.msg.picurl, imgtype);
+//                            $('#' + imgtype).val(data.msg.picurl);
+                                        loading = true;
+                                    } else {
+//                                        layer.msg(data.msg.message);
+                                        loading = true;
+                                    }
+//                            layer.close(lod);
+                                },
+                                error: function (xhr) {
+//                            layer.msg('上传出错');
+                                    loading = true;
+//                            layer.close(lod);
+                                }
+                            });
+                        }
+                    })
+                }
+                function setpicurl(picurl, imgtype) {
+                    $('#hidden01').hide();
+                    $('#show').show();
+                    $('#' + imgtype).val(picurl);
+                    $('#' + imgtype + '2').attr('src', picurl + '?r=' + Math.random());
+                }
+
+            </script>
+            <script>
+                function publish() {
+                    var imgurl = $("input[name='imgurl']").val();
+                    var tags_id = $("#tags").val();
+                    var title = $("input[name='title']").val();
+                    var content  = UE.getEditor('editor').getContent();
+                    console.log(content);
+
+                    /*提交*/
+                    var aj = $.ajax( {
+                        url:"{:url('User/publish')}",// 跳转到 action
+                        data:{
+                            "imgurl" :imgurl,
+                            "tags_id" : tags_id,
+                            "title":title,
+                            "content":content
+                        },
+                        type:'post',
+                        cache:false,
+                        timeout:0,
+                        dataType:'json',
+                        success:function(data) {
+                            console.log(data);
+                            if(data.code == 200){
+                                layer.msg('操作成功');
+                            }else {
+                                layer.msg('操作失败');
+                            }
+                        },
+                        error : function() {
+                            console.log(data);
+                        }
+                    });
+                }
+            </script>
+</body>
+</html>
