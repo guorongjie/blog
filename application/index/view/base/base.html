@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     {block name="title"}<title>网站标题</title>{/block}
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--<script src="__STATIC__/home/js/vue.js"></script>-->
+    <!--<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <script type="text/javascript" src="__PUBLIC__/jquery/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/jquery/jquery.validate.min.js"></script>
     <script src="__BOOTSTRAP__/js/bootstrap.js"></script>
-    <script src="http://apps.bdimg.com/libs/layer/2.1/layer.js"></script>
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-
+    <!--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>-->
     <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.css">
     <link rel="stylesheet" href="__STATIC__/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="__STATIC__/user/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
 
     <style>
 
@@ -23,62 +24,6 @@
 
         body {
             background: #f7f8fa;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /*
-        main
-        防止nav挡住
-        */
-
-        .main {
-            margin-top: 58px;
-        }
-
-
-        .sidebar-line {
-            padding: 16px 20px;
-            margin-bottom: 10px;
-            background: #fff;
-            border: 1px solid #e7eaf1;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
-        }
-
-        .sidebar-line li {
-            height: 40px;
-            padding-bottom: 4px;
-            color: #666;
-        }
-        .active-users .fa{
-            color: #ff5500;
-        }
-        .active-article .fa{
-            color: #ff0000;
-        }
-        .weixin-code{
-            padding: 10px;
-        }
-        .weixin-code img {
-            max-height: 100%;
-            max-width: 100%;
-        }
-
-        .navbar {
-            background: #fff;;
-            box-shadow: 0 1px 3px 0 rgba(0, 34, 77, .05);
-        }
-        .footer{
-            text-align: center;
-            padding: 10px 20px;
-            background: #f5f5f5;
         }
     </style>
     {block name="style"}
