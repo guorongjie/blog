@@ -59,4 +59,5 @@ CREATE TABLE `b_works` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='作品表';
 
-
+ALTER TABLE b_articles
+ADD COLUMN `introduction` text COMMENT '引言';

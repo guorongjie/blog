@@ -44,6 +44,9 @@
             min-height: 192px;
             text-align: center
         }
+        #title_img2{
+            max-height: 400px;
+        }
         .writeAddimg-tips{
             font-size: 12px;
 
@@ -103,14 +106,22 @@
         <div class="write-title">
             <input type="text" name="title" value="" placeholder="请输入标题">
         </div>
+
         <div class="tags">
-            <select class="form-control" id="tags">
-                <option value="0">请选择标签</option>
+            <select class="form-control" id="tags" onchange="tagsChange(this.value);">
+                <option value="">请选择标签</option>
                 {volist name="tags" id="vo"}
                 <option value="{$vo.id}">{$vo.name}</option>
                 {/volist}
+                <option value="0"><a onclick="addTags();">--添加标签--</a></option>
+
             </select>
         </div>
+        <h2>引言：</h2>
+        <div class="ue">
+            <script id="editor2" type="text/plain" style="height:200px;"></script>
+            </div>
+                    <h3>内容：</h3>
         <div class="ue">
             <script id="editor" type="text/plain" style="height:500px;"></script>
         </div>
@@ -118,6 +129,7 @@
 </div>
 <script type="text/javascript">
        var ue = UE.getEditor('editor');
+       var ue2 = UE.getEditor('editor2');
 
 
 </script>
@@ -132,7 +144,6 @@
                     upinput.change(function () {
                         if (loading) {
                             loading = false;
-//                    var lod = layer.load();
                             $("#uploadForm").ajaxSubmit({
                                 dataType: 'json',
                                 beforeSend: function () {
@@ -143,18 +154,13 @@
                                     console.log(data);
                                     if (data.code == 200) {
                                         setpicurl(data.msg.picurl, imgtype);
-//                            $('#' + imgtype).val(data.msg.picurl);
                                         loading = true;
                                     } else {
-//                                        layer.msg(data.msg.message);
                                         loading = true;
                                     }
-//                            layer.close(lod);
                                 },
                                 error: function (xhr) {
-//                            layer.msg('上传出错');
                                     loading = true;
-//                            layer.close(lod);
                                 }
                             });
                         }
@@ -169,11 +175,15 @@
 
             </script>
             <script>
+                layer.config({
+                    extend: 'extend/layer.ext.js'
+                });
                 function publish() {
                     var imgurl = $("input[name='imgurl']").val();
                     var tags_id = $("#tags").val();
                     var title = $("input[name='title']").val();
                     var content  = UE.getEditor('editor').getContent();
+                    var introduction  = UE.getEditor('editor2').getContent();
                     console.log(content);
 
                     /*提交*/
@@ -183,7 +193,8 @@
                             "imgurl" :imgurl,
                             "tags_id" : tags_id,
                             "title":title,
-                            "content":content
+                            "content":content,
+                            "introduction":introduction
                         },
                         type:'post',
                         cache:false,
@@ -201,6 +212,40 @@
                             console.log(data);
                         }
                     });
+                }
+                function addTags() {
+                    layer.prompt({title: '输入标签名称', formType: 1},function(val, index){
+                        layer.close(index);
+                        if(val != ''){
+                            /*提交*/
+                            var aj = $.ajax( {
+                                url:"{:url('User/addTags')}",// 跳转到 action
+                                data:{
+                                    "name" :val,
+                                },
+                                type:'post',
+                                cache:false,
+                                timeout:0,
+                                dataType:'json',
+                                success:function(data) {
+                                    console.log(data);
+                                    if(data.code == 200){
+                                        layer.msg(data.msg);
+                                    }else {
+                                        layer.msg(data.msg);
+                                    }
+                                },
+                                error : function() {
+                                    console.log(data);
+                                }
+                            });
+                        }
+                    });
+                }
+                function tagsChange(v) {
+                    if(v == '0'){
+                        addTags();
+                    }
                 }
             </script>
 </body>

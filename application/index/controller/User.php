@@ -6,6 +6,7 @@
  * Time: 19:44
  */
 namespace app\index\controller;
+use app\common\model\Tags;
 use think\Request;
 
 class User extends UsersBase{
@@ -26,6 +27,8 @@ class User extends UsersBase{
             $data['tags_id'] = $this->request->param('tags_id');
             $data['title'] = $this->request->param('title');
             $data['content'] = $this->request->param('content');
+            $data['introduction'] = $this->request->param('introduction');
+            $data['add_time'] = time();
 
             if($data['img'] == '' || $data['tags_id'] =='' || $data['title'] == '' || $data['content'] == ''){
                 return ajaxReturn(400, '参数错误');
@@ -70,5 +73,20 @@ class User extends UsersBase{
             $data['message'] = $file->getError();
         }
         return array('code' => 200, 'msg' => $data);
+    }
+
+    public function addTags()
+    {
+        $name = $this->request->param('name');
+        if (!$name) {
+            return ajaxReturn(404, '输入值为空');
+        }
+        $tagsModel = new  Tags();
+        $res = $tagsModel->save(array('name'=>$name, 'add_time'=>time()));
+        if (!$res) {
+            return ajaxReturn(404, '添加失败');
+        }
+        return ajaxReturn(200, '添加成功');
+
     }
 }

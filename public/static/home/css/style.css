@@ -53,3 +53,312 @@ main
     padding: 10px 20px;
     background: #f5f5f5;
 }
+
+/*登录*/
+.login{
+    margin-top: 60px;
+
+}
+.login-main{
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+.login-title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*index*/
+.Topstory-header {
+    line-height: 58px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: #fff;;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+
+.Topstory-header a {
+    text-decoration: none;
+}
+
+.Topstory-header i {
+    margin-right: 8px;
+}
+
+.Topstory-item {
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    background: #fff;
+    border:1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+.item-content .fa{
+    color: #666;
+}
+.quote-right{
+    float: right;
+}
+.item-img img {
+    display: block;
+    margin: auto;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.item-bottom {
+    margin: 10px 0;
+    color: #666;
+}
+
+.sidebar-line {
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+
+.sidebar-line li {
+    height: 40px;
+    padding-bottom: 4px;
+    color: #666;
+}
+.active-users .fa{
+    color: #ff5500;
+}
+.active-article .fa{
+    color: #ff0000;
+}
+.weixin-code{
+    padding: 10px;
+}
+.weixin-code img {
+    max-height: 100%;
+    max-width: 100%;
+}
+/*detail*/
+
+.detail{
+    margin-top: 60px;
+}
+.article{
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+.article-header{
+    text-align: center;
+}
+.article-content {
+    font-size: 16px;
+    line-height: 2;
+}
+.article-reword{
+    margin-top: 30px;
+    text-align: center;
+}
+.reword-text{
+    color: #666;
+}
+.article-reword .btn-danger{
+    /*background: #f44336;*/
+    padding: 4px 30px;
+}
+.detail .item-img img {
+    display: block;
+    margin: auto;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/*archives*/
+.archives {
+    margin: 100px 0;
+    /*padding: 100px 0;*/
+    border-left: 4px solid #ccc;
+}
+
+.archives-title {
+    margin-top: -6px;
+}
+
+.year {
+    margin: 60px 0;
+}
+.year-text{
+    font-size: 18px;
+}
+
+.fa-circle {
+    margin-right: 10px;
+    margin-left: -8px;
+}
+
+.archives-article {
+    color: #8c8c8c;
+    padding: 10px 0;
+    line-height: normal;
+    border-bottom: 1px dashed #ccc;
+    margin: 30px 0;
+}
+
+.archives-article:hover {
+    color: #000;
+    border-bottom: 1px dashed #000;
+}
+
+/*resume*/
+
+.resume .resume-head{
+    position: relative;
+    padding: 30px 50px;
+    color: #fff;
+    background-color: #00b38a;
+    overflow: hidden;
+}
+.resume .head-title{
+    width: 100%;
+    border-bottom: 2px solid #00a982;
+    font-size: 52px;
+    font-weight: 300;
+    overflow: hidden;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.resume  .title-name{
+    float: left;
+}
+.resume .title-name h1{
+    font-size: 60px;
+}
+.resume .job{
+    padding-top: 30px;
+    float: right;
+}
+.resume  .info{
+    float: left;
+    padding-left: 5px;
+    line-height: 30px;
+}
+.resume .contact{
+    float: right;
+    text-align: right;
+    padding-right: 5px
+}
+.resume  .contact ul{
+    margin: 8px 0 4px;
+}
+
+.resume  .resume-bd{
+    width: 100%;
+    min-height: 200px;
+    padding: 20px 30px 50px;
+    overflow: hidden;
+}
+.resume  .bd-left{
+    float: left;
+    width: 50%;
+}
+.resume   .bd-right{
+    float: right;
+    width: 50%;
+}
+.section-header{
+    position: relative;
+    height: 32px;
+    margin: 10px auto 5px;
+    overflow: hidden;
+}
+.resume  .skill{
+    overflow: hidden;
+    padding: 10px 15px;
+}
+.resume  .section-title-l{
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 35%;
+    height: 0;
+    vertical-align: middle;
+    border-top: 1px solid #ededed;
+}
+.resume  .section-title{
+    left: 0;
+    position: relative;
+    z-index: 1;
+    width: 24%;
+    min-width: 100px;
+    margin: 0 auto;
+    padding: 4px 10px;
+    border-radius: 32px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #eee;
+}
+.resume .section-title-r{
+    right: 0;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 35%;
+    height: 0;
+    vertical-align: middle;
+    border-top: 1px solid #ededed;
+}
+.resume  .section-list{
+    padding: 10px 0 5px;
+}
+.resume  .sectionList-text{
+    margin-bottom: 5px;
+    line-height: 24px;
+}
+.resume  .sectionList-text .fa-circle{
+    color: #00b38a;
+    font-size: 4px;
+    margin-right: 10px;
+}
+
+
+.resume  .person{
+    overflow: hidden;
+    padding: 10px 15px;
+}
+.resume   .section-item{
+    margin-bottom: 10px;
+}
+.resume  .item-bd{
+    overflow: hidden;
+}
+.resume   .item-header{
+    position: relative;
+    padding: 10px;
+    line-height: 20px;
+    overflow: hidden;
+    font-weight: 500;
+}
+.resume  .itemHeader-link{
+    float: right;
+    margin-left: 5px;
+    padding: 0 4px;
+}
+.resume  .itemHeader-title{
+    font-size: 16px;
+    display: inline-block;
+    float: left;
+}
+.resume  .itemDb-text{
+    padding-right: 10px;
+    text-align: justify;
+    word-break: break-all;
+    line-height: 22px;
+}

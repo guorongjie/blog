@@ -6,21 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     {block name="title"}<title>网站标题</title>{/block}
-    <!--<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
-    <script type="text/javascript" src="__PUBLIC__/jquery/jquery-3.2.1.slim.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/jquery/jquery.validate.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/jquery/jquery-3.2.1.slim.min.js"></script>-->
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/jquery/jquery.validate.min.js"></script>-->
     <script src="__BOOTSTRAP__/js/bootstrap.js"></script>
-    <!--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>-->
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.css">
     <link rel="stylesheet" href="__STATIC__/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="__STATIC__/user/css/base.css">
     <link rel="stylesheet" href="__STATIC__/home/css/style.css">
 
     <style>
-
-        /*------------*/
-        /**/
 
         body {
             background: #f7f8fa;
@@ -75,6 +72,7 @@
     <p><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;{$visit.visitors}&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;{$visit.visit}</p>
 </div>
 {/block}
+<!--canvas 效果-->
 <script type="text/javascript">
     window.onload = function(){
         var config = {
@@ -108,6 +106,8 @@
         }
     });
 </script>
+<!-- end --canvas 效果-->
+
 {/block}
 
 </body>

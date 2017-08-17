@@ -3,22 +3,7 @@
 {block name="title"}<title>我告诉你个小秘密</title>{/block}
 {block name="style"}
 <style>
-    .login{
-        margin-top: 60px;
 
-    }
-    .login-main{
-        padding: 10px 20px;
-        margin-bottom: 10px;
-        background: #fff;
-        border: 1px solid #e7eaf1;
-        border-radius: 2px;
-        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
-    }
-    .login-title{
-        text-align: center;
-        margin-bottom: 20px;
-    }
 </style>
 {/block}
 {block name="content"}
@@ -94,8 +79,8 @@
                     console.log(data);
                 },
                 success: function(data) {
+                    layer.msg(data.msg);
                     if(data.code == 200) {
-                        layer.msg('登陆成功');
                         location.href = "{:url('User/publish')}";
                     }
                 }
