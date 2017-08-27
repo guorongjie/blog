@@ -14,5 +14,8 @@ use think\Model;
 
 class Tags extends Model
 {
-
+    public function getAll($map=[], $field='*', $order='', $limit='')
+    {
+        return $this->where($map)->field($field)->order($order)->limit($limit)->select();
+    }
 }

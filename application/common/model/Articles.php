@@ -47,4 +47,15 @@ class Articles extends Model
     {
         return $this->order('visit desc')->limit(5)->select();
     }
+
+
+    /**
+     * @param $id
+     * @return int|true
+     * 字段值 + 1
+     */
+    public function setIncField($id, $field)
+    {
+        return $this->where(array('id' => $id))->setInc($field,'1');
+    }
 }

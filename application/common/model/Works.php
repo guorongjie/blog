@@ -15,15 +15,15 @@ use think\Model;
 class Works extends Model
 {
 
-    public function getAll($order='', $limit = 10)
+    public function getAll($map=[], $field='*', $order='', $limit = 10)
     {
         $list = $this
+            ->where($map)
+            ->field($field)
             ->order($order)
             ->paginate($limit);
         return $list;
     }
-
-
 
     public function getList()
     {

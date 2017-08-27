@@ -8,6 +8,7 @@
 namespace app\index\controller;
 
 use app\common\model\Ip;
+use app\common\model\Tags;
 use think\Controller;
 
 class Base extends Controller{
@@ -38,7 +39,8 @@ class Base extends Controller{
      */
     public function getTagsList()
     {
-        return model('Tags')->select();
+        $tagsModel = new Tags();
+        return $tagsModel->getAll();
     }
 
     /**

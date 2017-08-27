@@ -23,7 +23,7 @@ class User extends UsersBase{
     public function publish()
     {
         if ($this->request->isAjax()) {
-            $data['img']= $this->request->param('imgurl');
+            $data['img']= $this->request->param('imgurl','','trim');
             $data['tags_id'] = $this->request->param('tags_id');
             $data['title'] = $this->request->param('title');
             $data['content'] = $this->request->param('content');

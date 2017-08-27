@@ -9,6 +9,13 @@ use org\Verify;
 
 class Index extends Base
 {
+    public $_articleModel ;//文章model
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->_articleModel = new Articles();
+    }
     public function test()
     {
         $url = "https://hwid1.vmall.com/CAS/ajaxHandler/getSMSAuthCode?reflushCode=0.48269979445645872";
@@ -32,16 +39,14 @@ class Index extends Base
      */
     public function index()
     {
-        $articlesModel = new Articles();
-
         //列表
-        $list = $articlesModel->getAll();
+        $list = $this->_articleModel->getAll();
         $page = $list->render();
         $this->assign('lists', $list);
         $this->assign('page', $page);
 
         $this->assign('tags', $this->getTagsList());//标签
-        $this->assign('hot', $articlesModel->hot());//热文
+        $this->assign('hot', $this->_articleModel->hot());//热文
 
         return $this->fetch();
     }
@@ -58,11 +63,9 @@ class Index extends Base
         }
 
         //阅读量加一
-        $articleLogic = new ArticleLogic();
-        $articleLogic->addVist($id);
+        $this->_articleModel->setIncField($id, 'visit');
 
-        $articleModel = new Articles();
-        $info = $articleModel->getOne($id);
+        $info = $this->_articleModel->getOne($id);
         $this->assign('info', $info);
         return $this->fetch();
     }
@@ -89,7 +92,7 @@ class Index extends Base
                 $field = 'down';
                 break;
         }
-        $result = model('Articles')->where(array('id' => $id))->setInc($field, '1');
+        $result = $this->_articleModel->setIncField($id, $field);
         if (!$result) {
             return ajaxReturn(400, '服务器繁忙');
         }
@@ -169,8 +172,6 @@ class Index extends Base
      */
     public function works()
     {
-        $articlesModel = new Articles();
-
         $wordsModel = new Works();
         $list = $wordsModel->getAll();
         $page = $list->render();
@@ -179,7 +180,7 @@ class Index extends Base
         $this->assign('page', $page);
 
         $this->assign('tags', $this->getTagsList());//标签
-        $this->assign('hot', $articlesModel->hot());//热文
+        $this->assign('hot', $this->_articleModel->hot());//热文
 
         return $this->fetch();
     }
